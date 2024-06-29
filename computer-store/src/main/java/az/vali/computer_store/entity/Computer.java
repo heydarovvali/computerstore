@@ -1,9 +1,6 @@
 package az.vali.computer_store.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,4 +17,7 @@ public class Computer {
     private Boolean isNew;
     private String cpu;
     private Integer ram;
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
 }
