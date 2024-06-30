@@ -3,7 +3,13 @@ package az.vali.computer_store.entity;
 import az.vali.computer_store.status.CourierStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Getter
+@Setter
+@ToString
 @Entity(name = "computerstore_couriers")
 public class Courier {
     private Long id;
