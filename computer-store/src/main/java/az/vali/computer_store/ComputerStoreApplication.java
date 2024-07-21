@@ -8,6 +8,7 @@ public class ComputerStoreApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ComputerStoreApplication.class, args);
+
 	}
 
 }

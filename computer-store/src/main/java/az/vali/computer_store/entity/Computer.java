@@ -3,10 +3,12 @@ package az.vali.computer_store.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity(name = "computerstore_computers")
 @Getter
 @Setter
+@ToString
 public class Computer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
