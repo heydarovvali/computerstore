@@ -25,4 +25,10 @@ public class OrderController {
         Order databaseOrder = orderService.findCourierForOrder(orderId);
         return ResponseEntity.status(200).body(databaseOrder);
     }
+
+    @PutMapping("/orderDelivered/{orderId}")
+    public ResponseEntity<Order> orderDelivered(@PathVariable Long orderId) {
+        Order databaseOrder = orderService.orderDelivered(orderId);
+        return ResponseEntity.status(200).body(databaseOrder);
+    }
 }

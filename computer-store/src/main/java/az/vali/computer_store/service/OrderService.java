@@ -80,6 +80,24 @@ public class OrderService {
         return databaseOrder;
     }
 
+    public Order orderDelivered(Long orderId) {
+        Optional<Order> optOrder = orderRepository.findById(orderId);
+        if (optOrder.isEmpty()) {
+            throw new NotFoundException("Order is not found");
+        }
+        Order order = optOrder.get();
+        order.setOrderStatus(OrderStatus.DELIVERED);
+        Optional<Courier> optCourier = courierRepository.findById(order.getCourier().getId());
+        if (optCourier.isEmpty()) {
+            throw new NotFoundException("Courier is not found");
+        }
+        Courier courier = optCourier.get();
+        courier.setCourierStatus(CourierStatus.FREE);
+        Courier databaseCourier = courierRepository.save(courier);
+        order.setCourier(databaseCourier);
+        return orderRepository.save(order);
+    }
+
     public void clearBasket(long userId) {
         List<Basket> databaseBaskets = basketRepository.findAllByUserId(userId);
         for (int i = 0; i < databaseBaskets.size(); i++) {
